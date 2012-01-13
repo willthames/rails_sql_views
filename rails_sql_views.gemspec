@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anthony Eden"]
-  s.date = %q{2010-08-25}
+  s.date = %q{2012-01-13}
   s.description = %q{Adds support for using SQL views within ActiveRecord}
   s.email = %q{josh@technicalpickles.com}
   s.extra_rdoc_files = [

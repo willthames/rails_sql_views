@@ -1,9 +1,6 @@
 module RailsSqlViews
   module ConnectionAdapters # :nodoc:
     module SchemaStatements
-      def self.included(base)
-        base.alias_method_chain :drop_table, :cascade
-      end
 
       # Create a view.
       # The +options+ hash can include the following keys:
@@ -58,8 +55,10 @@ module RailsSqlViews
         execute view_sql
       end
 
-      def drop_table_with_cascade(table_name, options = {})
-        execute "DROP TABLE #{quote_table_name(table_name)} CASCADE"
+      def drop_table(table_name, options = {})
+        sql = "DROP TABLE #{quote_table_name(table_name)}"
+        sql << " CASCADE" if supports_drop_table_cascade?
+        execute sql
       end
       
       # Drop a view.
